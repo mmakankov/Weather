@@ -43,4 +43,16 @@
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
 }
 
+#pragma mark - Getters and setters
+
+- (NSString *)documentsDirectory {
+    
+    static NSString *documentsDirectory = nil;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        documentsDirectory = [NSHomeDirectory() stringByAppendingPathComponent:@"Documents"];
+    });
+    return documentsDirectory;
+}
+
 @end

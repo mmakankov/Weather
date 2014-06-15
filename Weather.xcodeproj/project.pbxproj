@@ -14,13 +14,19 @@
 		84749EAA194C4DE300087BA5 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 84749EA9194C4DE300087BA5 /* main.m */; };
 		84749EAE194C4DE300087BA5 /* WTAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 84749EAD194C4DE300087BA5 /* WTAppDelegate.m */; };
 		84749EB1194C4DE300087BA5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84749EAF194C4DE300087BA5 /* Main.storyboard */; };
-		84749EB4194C4DE300087BA5 /* WTViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84749EB3194C4DE300087BA5 /* WTViewController.m */; };
 		84749EB6194C4DE300087BA5 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 84749EB5194C4DE300087BA5 /* Images.xcassets */; };
 		84749EBD194C4DE300087BA5 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84749EBC194C4DE300087BA5 /* XCTest.framework */; };
 		84749EBE194C4DE300087BA5 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84749E9D194C4DE300087BA5 /* Foundation.framework */; };
 		84749EBF194C4DE300087BA5 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84749EA1194C4DE300087BA5 /* UIKit.framework */; };
 		84749EC7194C4DE300087BA5 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 84749EC5194C4DE300087BA5 /* InfoPlist.strings */; };
 		84749EC9194C4DE300087BA5 /* WeatherTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 84749EC8194C4DE300087BA5 /* WeatherTests.m */; };
+		84749ED5194C4E9C00087BA5 /* WTMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84749ED4194C4E9C00087BA5 /* WTMainViewController.m */; };
+		84749ED8194C4EB800087BA5 /* WTDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84749ED7194C4EB800087BA5 /* WTDetailsViewController.m */; };
+		84749EDC194C4F9000087BA5 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 84749EDA194C4F9000087BA5 /* Model.xcdatamodeld */; };
+		84749EDF194C501F00087BA5 /* WTDBStorage.m in Sources */ = {isa = PBXBuildFile; fileRef = 84749EDE194C501F00087BA5 /* WTDBStorage.m */; };
+		84749EE8194C77A700087BA5 /* WTCityCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 84749EE7194C77A700087BA5 /* WTCityCell.m */; };
+		84E07CBB194DBF9A0004105A /* WTNetworkManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 84E07CBA194DBF9A0004105A /* WTNetworkManager.m */; };
+		84F038D5194D99E40045EE56 /* City.m in Sources */ = {isa = PBXBuildFile; fileRef = 84F038D4194D99E40045EE56 /* City.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -45,14 +51,25 @@
 		84749EAC194C4DE300087BA5 /* WTAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WTAppDelegate.h; sourceTree = "<group>"; };
 		84749EAD194C4DE300087BA5 /* WTAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WTAppDelegate.m; sourceTree = "<group>"; };
 		84749EB0194C4DE300087BA5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		84749EB2194C4DE300087BA5 /* WTViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WTViewController.h; sourceTree = "<group>"; };
-		84749EB3194C4DE300087BA5 /* WTViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WTViewController.m; sourceTree = "<group>"; };
 		84749EB5194C4DE300087BA5 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		84749EBB194C4DE300087BA5 /* WeatherTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WeatherTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		84749EBC194C4DE300087BA5 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		84749EC4194C4DE300087BA5 /* WeatherTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "WeatherTests-Info.plist"; sourceTree = "<group>"; };
 		84749EC6194C4DE300087BA5 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		84749EC8194C4DE300087BA5 /* WeatherTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WeatherTests.m; sourceTree = "<group>"; };
+		84749ED3194C4E9C00087BA5 /* WTMainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WTMainViewController.h; sourceTree = "<group>"; };
+		84749ED4194C4E9C00087BA5 /* WTMainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WTMainViewController.m; sourceTree = "<group>"; };
+		84749ED6194C4EB800087BA5 /* WTDetailsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WTDetailsViewController.h; sourceTree = "<group>"; };
+		84749ED7194C4EB800087BA5 /* WTDetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WTDetailsViewController.m; sourceTree = "<group>"; };
+		84749EDB194C4F9000087BA5 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
+		84749EDD194C501F00087BA5 /* WTDBStorage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WTDBStorage.h; sourceTree = "<group>"; };
+		84749EDE194C501F00087BA5 /* WTDBStorage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WTDBStorage.m; sourceTree = "<group>"; };
+		84749EE6194C77A700087BA5 /* WTCityCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WTCityCell.h; sourceTree = "<group>"; };
+		84749EE7194C77A700087BA5 /* WTCityCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WTCityCell.m; sourceTree = "<group>"; };
+		84E07CB9194DBF9A0004105A /* WTNetworkManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WTNetworkManager.h; sourceTree = "<group>"; };
+		84E07CBA194DBF9A0004105A /* WTNetworkManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WTNetworkManager.m; sourceTree = "<group>"; };
+		84F038D3194D99E40045EE56 /* City.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = City.h; sourceTree = "<group>"; };
+		84F038D4194D99E40045EE56 /* City.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = City.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -115,9 +132,11 @@
 				84749EAC194C4DE300087BA5 /* WTAppDelegate.h */,
 				84749EAD194C4DE300087BA5 /* WTAppDelegate.m */,
 				84749EAF194C4DE300087BA5 /* Main.storyboard */,
-				84749EB2194C4DE300087BA5 /* WTViewController.h */,
-				84749EB3194C4DE300087BA5 /* WTViewController.m */,
 				84749EB5194C4DE300087BA5 /* Images.xcassets */,
+				84E07CB8194DBF790004105A /* API */,
+				84749ED9194C4F7E00087BA5 /* DataModel */,
+				84749ED2194C4E0F00087BA5 /* ViewControllers */,
+				84749EE5194C776D00087BA5 /* Views */,
 				84749EA4194C4DE300087BA5 /* Supporting Files */,
 			);
 			path = Weather;
@@ -150,6 +169,55 @@
 				84749EC5194C4DE300087BA5 /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		84749ED2194C4E0F00087BA5 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				84749ED3194C4E9C00087BA5 /* WTMainViewController.h */,
+				84749ED4194C4E9C00087BA5 /* WTMainViewController.m */,
+				84749ED6194C4EB800087BA5 /* WTDetailsViewController.h */,
+				84749ED7194C4EB800087BA5 /* WTDetailsViewController.m */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		84749ED9194C4F7E00087BA5 /* DataModel */ = {
+			isa = PBXGroup;
+			children = (
+				84749EE1194C6A5B00087BA5 /* Entities */,
+				84749EDA194C4F9000087BA5 /* Model.xcdatamodeld */,
+				84749EDD194C501F00087BA5 /* WTDBStorage.h */,
+				84749EDE194C501F00087BA5 /* WTDBStorage.m */,
+			);
+			path = DataModel;
+			sourceTree = "<group>";
+		};
+		84749EE1194C6A5B00087BA5 /* Entities */ = {
+			isa = PBXGroup;
+			children = (
+				84F038D3194D99E40045EE56 /* City.h */,
+				84F038D4194D99E40045EE56 /* City.m */,
+			);
+			path = Entities;
+			sourceTree = "<group>";
+		};
+		84749EE5194C776D00087BA5 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				84749EE6194C77A700087BA5 /* WTCityCell.h */,
+				84749EE7194C77A700087BA5 /* WTCityCell.m */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		84E07CB8194DBF790004105A /* API */ = {
+			isa = PBXGroup;
+			children = (
+				84E07CB9194DBF9A0004105A /* WTNetworkManager.h */,
+				84E07CBA194DBF9A0004105A /* WTNetworkManager.m */,
+			);
+			path = API;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -250,9 +318,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				84749ED8194C4EB800087BA5 /* WTDetailsViewController.m in Sources */,
+				84749ED5194C4E9C00087BA5 /* WTMainViewController.m in Sources */,
+				84E07CBB194DBF9A0004105A /* WTNetworkManager.m in Sources */,
+				84F038D5194D99E40045EE56 /* City.m in Sources */,
+				84749EDC194C4F9000087BA5 /* Model.xcdatamodeld in Sources */,
+				84749EE8194C77A700087BA5 /* WTCityCell.m in Sources */,
+				84749EDF194C501F00087BA5 /* WTDBStorage.m in Sources */,
 				84749EAA194C4DE300087BA5 /* main.m in Sources */,
 				84749EAE194C4DE300087BA5 /* WTAppDelegate.m in Sources */,
-				84749EB4194C4DE300087BA5 /* WTViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -461,6 +535,7 @@
 				84749ECE194C4DE300087BA5 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		84749ECF194C4DE300087BA5 /* Build configuration list for PBXNativeTarget "WeatherTests" */ = {
 			isa = XCConfigurationList;
@@ -469,8 +544,22 @@
 				84749ED1194C4DE300087BA5 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		84749EDA194C4F9000087BA5 /* Model.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				84749EDB194C4F9000087BA5 /* Model.xcdatamodel */,
+			);
+			currentVersion = 84749EDB194C4F9000087BA5 /* Model.xcdatamodel */;
+			path = Model.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 84749E92194C4DE300087BA5 /* Project object */;
 }

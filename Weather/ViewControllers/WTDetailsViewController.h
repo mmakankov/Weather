@@ -1,5 +1,5 @@
 //
-//  WTViewController.h
+//  WTDetailsViewController.h
 //  Weather
 //
 //  Created by mmakankov on 14/06/14.
@@ -8,6 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
-@interface WTViewController : UIViewController
+@class City;
+
+@interface WTDetailsViewController : UIViewController
+
+@property (nonatomic) City *currentCity;
 
 @end

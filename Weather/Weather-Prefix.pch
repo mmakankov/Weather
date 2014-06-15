@@ -14,3 +14,11 @@
     #import <UIKit/UIKit.h>
     #import <Foundation/Foundation.h>
 #endif
+
+#import "WTAppDelegate.h"
+
+#define APP_DELEGATE ((WTAppDelegate *)[UIApplication sharedApplication].delegate)
+
+#if DEBUG
+    #define DLog NSLog
+#endif
