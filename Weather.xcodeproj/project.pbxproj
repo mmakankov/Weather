@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		845B7A66194E183E00A12982 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 845B7A65194E183E00A12982 /* Reachability.m */; };
 		84749E9E194C4DE300087BA5 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84749E9D194C4DE300087BA5 /* Foundation.framework */; };
 		84749EA0194C4DE300087BA5 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84749E9F194C4DE300087BA5 /* CoreGraphics.framework */; };
 		84749EA2194C4DE300087BA5 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84749EA1194C4DE300087BA5 /* UIKit.framework */; };
@@ -24,8 +25,10 @@
 		84749ED8194C4EB800087BA5 /* WTDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84749ED7194C4EB800087BA5 /* WTDetailsViewController.m */; };
 		84749EDC194C4F9000087BA5 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 84749EDA194C4F9000087BA5 /* Model.xcdatamodeld */; };
 		84749EDF194C501F00087BA5 /* WTDBStorage.m in Sources */ = {isa = PBXBuildFile; fileRef = 84749EDE194C501F00087BA5 /* WTDBStorage.m */; };
-		84749EE8194C77A700087BA5 /* WTCityCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 84749EE7194C77A700087BA5 /* WTCityCell.m */; };
+		84749EE8194C77A700087BA5 /* WTMainCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 84749EE7194C77A700087BA5 /* WTMainCell.m */; };
 		84E07CBB194DBF9A0004105A /* WTNetworkManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 84E07CBA194DBF9A0004105A /* WTNetworkManager.m */; };
+		84E07CBF194DEF030004105A /* WTAddViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84E07CBE194DEF030004105A /* WTAddViewController.m */; };
+		84E07CC2194DF6E30004105A /* WTCityCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 84E07CC1194DF6E30004105A /* WTCityCell.m */; };
 		84F038D5194D99E40045EE56 /* City.m in Sources */ = {isa = PBXBuildFile; fileRef = 84F038D4194D99E40045EE56 /* City.m */; };
 /* End PBXBuildFile section */
 
@@ -40,6 +43,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		845B7A64194E183E00A12982 /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
+		845B7A65194E183E00A12982 /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
 		84749E9A194C4DE300087BA5 /* Weather.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Weather.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		84749E9D194C4DE300087BA5 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		84749E9F194C4DE300087BA5 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -64,10 +69,14 @@
 		84749EDB194C4F9000087BA5 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
 		84749EDD194C501F00087BA5 /* WTDBStorage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WTDBStorage.h; sourceTree = "<group>"; };
 		84749EDE194C501F00087BA5 /* WTDBStorage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WTDBStorage.m; sourceTree = "<group>"; };
-		84749EE6194C77A700087BA5 /* WTCityCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WTCityCell.h; sourceTree = "<group>"; };
-		84749EE7194C77A700087BA5 /* WTCityCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WTCityCell.m; sourceTree = "<group>"; };
+		84749EE6194C77A700087BA5 /* WTMainCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WTMainCell.h; sourceTree = "<group>"; };
+		84749EE7194C77A700087BA5 /* WTMainCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WTMainCell.m; sourceTree = "<group>"; };
 		84E07CB9194DBF9A0004105A /* WTNetworkManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WTNetworkManager.h; sourceTree = "<group>"; };
 		84E07CBA194DBF9A0004105A /* WTNetworkManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WTNetworkManager.m; sourceTree = "<group>"; };
+		84E07CBD194DEF030004105A /* WTAddViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WTAddViewController.h; sourceTree = "<group>"; };
+		84E07CBE194DEF030004105A /* WTAddViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WTAddViewController.m; sourceTree = "<group>"; };
+		84E07CC0194DF6E30004105A /* WTCityCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WTCityCell.h; sourceTree = "<group>"; };
+		84E07CC1194DF6E30004105A /* WTCityCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WTCityCell.m; sourceTree = "<group>"; };
 		84F038D3194D99E40045EE56 /* City.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = City.h; sourceTree = "<group>"; };
 		84F038D4194D99E40045EE56 /* City.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = City.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -178,6 +187,8 @@
 				84749ED4194C4E9C00087BA5 /* WTMainViewController.m */,
 				84749ED6194C4EB800087BA5 /* WTDetailsViewController.h */,
 				84749ED7194C4EB800087BA5 /* WTDetailsViewController.m */,
+				84E07CBD194DEF030004105A /* WTAddViewController.h */,
+				84E07CBE194DEF030004105A /* WTAddViewController.m */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -205,8 +216,10 @@
 		84749EE5194C776D00087BA5 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				84749EE6194C77A700087BA5 /* WTCityCell.h */,
-				84749EE7194C77A700087BA5 /* WTCityCell.m */,
+				84749EE6194C77A700087BA5 /* WTMainCell.h */,
+				84749EE7194C77A700087BA5 /* WTMainCell.m */,
+				84E07CC0194DF6E30004105A /* WTCityCell.h */,
+				84E07CC1194DF6E30004105A /* WTCityCell.m */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -216,6 +229,8 @@
 			children = (
 				84E07CB9194DBF9A0004105A /* WTNetworkManager.h */,
 				84E07CBA194DBF9A0004105A /* WTNetworkManager.m */,
+				845B7A64194E183E00A12982 /* Reachability.h */,
+				845B7A65194E183E00A12982 /* Reachability.m */,
 			);
 			path = API;
 			sourceTree = "<group>";
@@ -321,12 +336,15 @@
 				84749ED8194C4EB800087BA5 /* WTDetailsViewController.m in Sources */,
 				84749ED5194C4E9C00087BA5 /* WTMainViewController.m in Sources */,
 				84E07CBB194DBF9A0004105A /* WTNetworkManager.m in Sources */,
+				84E07CBF194DEF030004105A /* WTAddViewController.m in Sources */,
 				84F038D5194D99E40045EE56 /* City.m in Sources */,
 				84749EDC194C4F9000087BA5 /* Model.xcdatamodeld in Sources */,
-				84749EE8194C77A700087BA5 /* WTCityCell.m in Sources */,
+				84749EE8194C77A700087BA5 /* WTMainCell.m in Sources */,
 				84749EDF194C501F00087BA5 /* WTDBStorage.m in Sources */,
 				84749EAA194C4DE300087BA5 /* main.m in Sources */,
 				84749EAE194C4DE300087BA5 /* WTAppDelegate.m in Sources */,
+				845B7A66194E183E00A12982 /* Reachability.m in Sources */,
+				84E07CC2194DF6E30004105A /* WTCityCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

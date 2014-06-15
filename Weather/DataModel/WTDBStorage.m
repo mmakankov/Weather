@@ -76,7 +76,7 @@ NSString *entityNameCity = @"City";
     moscow.id = @524901;
     
     City *stPetersburg =  [NSEntityDescription insertNewObjectForEntityForName:entityNameCity inManagedObjectContext:self.context];
-    stPetersburg.name = @"Saint Petersburg,ru";
+    stPetersburg.name = @"Saint Petersburg";
     stPetersburg.lastDate = [NSDate date];
     stPetersburg.temperature = @20.0;
     stPetersburg.id = @498817;
@@ -95,15 +95,24 @@ NSString *entityNameCity = @"City";
     }
     
     city.name = dictionary[@"name"];
-    NSNumber *dateTime = dictionary[@"dt"];
-    city.lastDate = [NSDate dateWithTimeIntervalSince1970:dateTime.integerValue];
+    city.id = dictionary[@"id"];
+    //NSNumber *dateTime = dictionary[@"dt"];
+    //city.lastDate = [NSDate dateWithTimeIntervalSince1970:dateTime.integerValue];
     city.temperature = dictionary[@"main"][@"temp"];
     city.weather = dictionary[@"weather"][0][@"main"];
     city.weatherDescription = dictionary[@"weather"][0][@"description"];
     city.iconId = dictionary[@"weather"][0][@"icon"];
     city.windSpeed = dictionary[@"wind"][@"speed"];
+    
+    [self commitContext];
 }
 
+- (void)removeObject:(City *)city {
+    
+    [self.context deleteObject:city];
+    [self commitContext];
+}
+                      
 - (void)commitContext {
     NSError * error = nil;
     [self.context save:&error];

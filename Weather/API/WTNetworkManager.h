@@ -30,14 +30,46 @@
  */
 + (instancetype) new __attribute__((unavailable("new not available, call sharedInstance instead")));
 
+/**
+ Request and save data for array of cities
+ @param cities Cities to request
+ */
 - (void)requestDataForArray:(NSArray *)cities;
 
-- (void)requestDataForCityName:(NSString *)cityName;
+/**
+ Request and save data for current city id
+ @param cityId Id of a city
+ */
+- (void)requestDataForCityId:(NSNumber *)cityId;
 
-- (void)requestIconWithId:(NSString *)iconId;
+/**
+ Request and save icon for current icon id
+ @param iconId Id of a icon
+ @param completionHandler Completion handler of current method
+ */
+- (void)requestIconWithId:(NSString *)iconId completionHandler:(void(^)(NSData *data))completionHandler;
 
-- (void)requestDailyForecastForCityName:(NSString *)cityName
-                             daysNumber:(NSInteger)daysNumber
-                      complitionHandler:(void(^)(NSArray *list))complitionHandler;
+/**
+ Request and save daily forecast data for current city id and days number
+ @param cityId Id of a city
+ @param daysNumber Number of days in forecast
+ @param completionHandler Completion handler of current method
+ */
+- (void)requestDailyForecastForCityId:(NSNumber *)cityId
+                           daysNumber:(NSInteger)daysNumber
+                    completionHandler:(void(^)(NSArray *list))completionHandler;
+
+/**
+ Request cities by string
+ @param string String to find
+ @param completionHandler Completion handler of current method
+ */
+- (void)requestCitiesByString:(NSString *)string
+            completionHandler:(void(^)(NSArray *list))completionHandler;
+
+/**
+ Is network available.
+ */
+@property (nonatomic) BOOL isOnline;
 
 @end

@@ -10,9 +10,10 @@
 #import <CoreData/CoreData.h>
 #import "WTDBStorage.h"
 #import "City.h"
-#import "WTCityCell.h"
+#import "WTMainCell.h"
 #import "WTDetailsViewController.h"
 #import "WTNetworkManager.h"
+#import "Reachability.h"
 
 @interface WTMainViewController () <NSFetchedResultsControllerDelegate>
 
@@ -22,10 +23,10 @@
 
 @implementation WTMainViewController
 
-- (id)initWithCoder:(NSCoder *)aDecoder {
+- (instancetype)initWithCoder:(NSCoder *)aDecoder {
     self = [super initWithCoder:aDecoder];
     if (self) {
-        
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(networkChanged:) name:kReachabilityChangedNotification object:nil];
     }
     return self;
 }
@@ -34,9 +35,6 @@
 {
     [super viewDidLoad];
 
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
- 
     self.title = @"Cities";
     self.navigationItem.leftBarButtonItem = self.editButtonItem;
     UIBarButtonItem *addItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(addItemClicked:)];
@@ -46,7 +44,6 @@
 	if (![self.fetchedResultsController performFetch:&error]) {
 		DLog(@"Unresolved error %@, %@", error, error.userInfo);
 	}
-    
     [[WTNetworkManager sharedInstance] requestDataForArray:self.fetchedResultsController.fetchedObjects];
 }
 
@@ -54,6 +51,11 @@
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void)dealloc {
+    
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 #pragma mark - Table view data source
@@ -71,7 +73,7 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *CellIdentifier = @"Cell";
-    WTCityCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
+    WTMainCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     
     // Configure the cell...
     [self configureCell:cell atIndexPath:indexPath];
@@ -79,11 +81,10 @@
     return cell;
 }
 
-- (WTCityCell *)configureCell:(WTCityCell *)cell atIndexPath:(NSIndexPath*)indexPath {
+- (WTMainCell *)configureCell:(WTMainCell *)cell atIndexPath:(NSIndexPath*)indexPath {
     
     cell.cityLabel.text = ((City *)[self.fetchedResultsController objectAtIndexPath:indexPath]).name;
-    cell.temperatureLabel.text = ((City *)[self.fetchedResultsController objectAtIndexPath:indexPath]).temperature.stringValue;
-    
+    cell.temperatureLabel.text = [NSString stringWithFormat:@"%@°", ((City *)[self.fetchedResultsController objectAtIndexPath:indexPath]).temperature];
     
     cell.iconImageView.image = [UIImage imageWithContentsOfFile:[APP_DELEGATE.documentsDirectory stringByAppendingPathComponent:[NSString stringWithFormat:@"%@.png", ((City *)[self.fetchedResultsController objectAtIndexPath:indexPath]).iconId]]];
     return cell;
@@ -97,11 +98,8 @@
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (editingStyle == UITableViewCellEditingStyleDelete) {
-        //TODO Delete the row from the data source
-    }   
-    else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // TODO Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
+        [[WTDBStorage sharedInstance] removeObject:[self.fetchedResultsController objectAtIndexPath:indexPath]];
+    }
 }
 
 #pragma mark - Navigation
@@ -109,14 +107,23 @@
 // In a story board-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    WTDetailsViewController *detailsController = [segue destinationViewController];
-    detailsController.currentCity = sender;
+    if ([segue.identifier isEqualToString:@"pushDetailsViewController"]) {
+        WTDetailsViewController *detailsController = [segue destinationViewController];
+        detailsController.currentCity = sender;
+    }
+    else if ([segue.identifier isEqualToString:@"pushAddViewController"]) {
+        
+    }
 }
 
 #pragma mark -  Actions
 
 - (void)addItemClicked:(id)sender {
-    
+    if ([WTNetworkManager sharedInstance].isOnline) {
+        [self performSegueWithIdentifier:@"pushAddViewController" sender:nil];
+    } else {
+        [[[UIAlertView alloc] initWithTitle:@"Warning!" message:@"Network is not available" delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil] show];
+    }
 }
 
 #pragma mark - NSFetchedResultsController methods
@@ -162,7 +169,7 @@
             break;
             
         case NSFetchedResultsChangeUpdate:
-            [self configureCell:(WTCityCell *)[self.tableView cellForRowAtIndexPath:indexPath] atIndexPath:indexPath];
+            [self configureCell:(WTMainCell *)[self.tableView cellForRowAtIndexPath:indexPath] atIndexPath:indexPath];
             break;
             
         case NSFetchedResultsChangeMove:
@@ -176,4 +183,12 @@
     [self.tableView endUpdates];
 }
 
+#pragma mark - Notifications
+
+- (void)networkChanged:(NSNotification *)notification {
+    
+    if ([WTNetworkManager sharedInstance].isOnline) {
+        [[WTNetworkManager sharedInstance] requestDataForArray:self.fetchedResultsController.fetchedObjects];
+    }
+}
 @end

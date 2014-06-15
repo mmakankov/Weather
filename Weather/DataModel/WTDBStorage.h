@@ -8,6 +8,8 @@
 
 #import <Foundation/Foundation.h>
 
+@class City;
+
 extern NSString * const dataBaseDidChangeNotification;
 extern NSString *entityNameCity;
 
@@ -33,8 +35,21 @@ extern NSString *entityNameCity;
  */
 + (instancetype) new __attribute__((unavailable("new not available, call sharedInstance instead")));
 
+/**
+ Insert or update current object in database with dictionary data
+ @param dictionary Dictionary data to save to database
+ */
 - (void)insertOrUpdateObjectWithDictionary:(NSDictionary *)dictionary;
 
+/**
+ Remove object from database
+ @param city City to remove
+ */
+- (void)removeObject:(City *)city;
+
+/**
+ Working context
+ */
 @property (nonatomic) NSManagedObjectContext *context;
 
 @end

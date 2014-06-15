@@ -12,6 +12,9 @@
 
 @interface WTDetailsViewController : UIViewController
 
+/**
+ City to display
+ */
 @property (nonatomic) City *currentCity;
 
 @end

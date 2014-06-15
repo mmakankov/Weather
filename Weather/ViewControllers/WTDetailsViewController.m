@@ -8,7 +8,7 @@
 
 #import "WTDetailsViewController.h"
 #import "City.h"
-#import "WTCityCell.h"
+#import "WTMainCell.h"
 #import "WTNetworkManager.h"
 
 @interface WTDetailsViewController () <UITableViewDataSource, UITableViewDelegate>
@@ -27,12 +27,11 @@
 
 @implementation WTDetailsViewController
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
+- (instancetype)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
-        self.daysNumber = 3;
     }
     return self;
 }
@@ -42,17 +41,17 @@
     [super viewDidLoad];
 	
     self.title = self.currentCity.name;
-    self.daysNumber = 3;
+    self.daysNumber = 7;
     
-    self.temperatureLabel.text = self.currentCity.temperature.stringValue;
+    self.temperatureLabel.text = [NSString stringWithFormat:@"%@°", self.currentCity.temperature];
     self.weatherLabel.text = self.currentCity.weather;
     self.descriptionLabel.text = self.currentCity.weatherDescription;
-    self.windLabel.text = self.currentCity.windSpeed.stringValue;
+    self.windLabel.text = [NSString stringWithFormat:@"wind speed: %@", self.currentCity.windSpeed];
     self.iconLabel.image = [UIImage imageWithContentsOfFile:[APP_DELEGATE.documentsDirectory stringByAppendingPathComponent:[NSString stringWithFormat:@"%@.png", self.currentCity.iconId]]];
     
-    [[WTNetworkManager sharedInstance] requestDailyForecastForCityName:self.currentCity.name
+    [[WTNetworkManager sharedInstance] requestDailyForecastForCityId:self.currentCity.id
                                                             daysNumber:self.daysNumber
-                                                     complitionHandler:^(NSArray *list){
+                                                     completionHandler:^(NSArray *list){
                                                          dispatch_async(dispatch_get_main_queue(), ^{
                                                              self.dailyForecast = list;
                                                              [self.tableView reloadData];
@@ -81,7 +80,7 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *CellIdentifier = @"Cell";
-    WTCityCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
+    WTMainCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     
     // Configure the cell...
     [self configureCell:cell atIndexPath:indexPath];
@@ -89,7 +88,7 @@
     return cell;
 }
 
-- (WTCityCell *)configureCell:(WTCityCell *)cell atIndexPath:(NSIndexPath*)indexPath {
+- (WTMainCell *)configureCell:(WTMainCell *)cell atIndexPath:(NSIndexPath*)indexPath {
     
     NSDictionary *dayDictionary = self.dailyForecast[indexPath.row];
     
@@ -100,8 +99,18 @@
     
     cell.cityLabel.text = dateString;
     NSNumber *dayTemp = dayDictionary[@"temp"][@"day"];
-    cell.temperatureLabel.text = dayTemp.stringValue;
-    cell.iconImageView.image = [UIImage imageWithContentsOfFile:[APP_DELEGATE.documentsDirectory stringByAppendingPathComponent:[NSString stringWithFormat:@"%@.png", dayDictionary[@"weather"][0][@"icon"]]]];
+    cell.temperatureLabel.text = [NSString stringWithFormat:@"%@°", dayTemp.stringValue];
+    
+    NSString *filePath = [APP_DELEGATE.documentsDirectory stringByAppendingPathComponent:[NSString stringWithFormat:@"%@.png", dayDictionary[@"weather"][0][@"icon"]]];
+    
+    if ([[NSFileManager defaultManager] fileExistsAtPath:filePath]) {
+        cell.iconImageView.image = [UIImage imageWithContentsOfFile:filePath];
+    } else {
+        [[WTNetworkManager sharedInstance] requestIconWithId:dayDictionary[@"weather"][0][@"icon"] completionHandler:^(NSData *data){
+            [self.tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
+        }];
+    }
+    
     
     return cell;
 }
