@@ -133,7 +133,7 @@ static const NSString *baseFindURL = @"http://api.openweathermap.org/data/2.5/fi
     
     NSString *urlString = [baseForecastURL stringByAppendingString:cityId.stringValue];
     if (daysNumber) {
-        urlString = [NSString stringWithFormat:@"%@%@%li", urlString, daysNumberString, daysNumber];
+        urlString = [NSString stringWithFormat:@"%@%@%li", urlString, daysNumberString, (long)daysNumber];
     }
     
     NSURL *url = [NSURL URLWithString:urlString];

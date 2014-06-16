@@ -10,8 +10,7 @@
 
 @class City;
 
-extern NSString * const dataBaseDidChangeNotification;
-extern NSString *entityNameCity;
+extern NSString *const entityNameCity;
 
 @interface WTDBStorage : NSObject
 

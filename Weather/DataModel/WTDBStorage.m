@@ -10,8 +10,7 @@
 #import <CoreData/CoreData.h>
 #import "City.h"
 
-NSString * const dataBaseDidChangeNotification = @"dataBaseDidChangeNotification";
-NSString *entityNameCity = @"City";
+NSString *const entityNameCity = @"City";
 
 @interface WTDBStorage ()
 
